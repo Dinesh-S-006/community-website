@@ -1,5 +1,7 @@
 import type { NextConfig } from 'next';
 
+const isProd = process.env.NODE_ENV === 'production';
+
 const nextConfig: NextConfig = {
   output: 'export',
   images: {
@@ -13,8 +15,8 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-  // Base path for GitHub Pages (will be your repo name)
-  basePath: '/community-website',
+  // Base path only for GitHub Pages production deployment
+  basePath: isProd ? '/community-website' : '',
   // Remove basePath if deploying to username.github.io (custom domain or user site)
 };
 
