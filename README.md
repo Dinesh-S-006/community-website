@@ -124,34 +124,70 @@ The page will auto-reload when you make changes to the code.
 
 ```
 community-website/
-├── app/
+├── .github/                 # GitHub configuration
+│   ├── workflows/
+│   │   └── deploy.yml       # GitHub Actions CI/CD pipeline
+│   ├── CODEOWNERS           # Code ownership rules
+│   └── PULL_REQUEST_TEMPLATE.md
+├── app/                     # Next.js App Router directory
 │   ├── components/          # Reusable React components
-│   │   ├── CommunityPartners.tsx
-│   │   ├── Header.tsx
-│   │   ├── HeroSection.tsx
-│   │   ├── LocationCard.tsx
-│   │   ├── MissionLogs.tsx
-│   │   ├── Navigation.tsx
-│   │   ├── NextEventCard.tsx
-│   │   ├── SocialCard.tsx
-│   │   ├── Sponsors.tsx
-│   │   ├── StatsCard.tsx
-│   │   ├── TeamSection.tsx
-│   │   └── TechStackCard.tsx
-│   ├── context/             # React context providers
-│   │   └── ThemeContext.tsx
-│   ├── favicon.ico
-│   ├── globals.css          # Global styles and Tailwind config
-│   ├── layout.tsx           # Root layout with fonts and providers
+│   │   ├── CommunityPartners.tsx  # Partner organizations section
+│   │   ├── Header.tsx             # Site header with theme toggle
+│   │   ├── HeroSection.tsx        # Main hero banner
+│   │   ├── LocationCard.tsx       # Chennai hub info card
+│   │   ├── MissionLogs.tsx        # Past events history
+│   │   ├── Navigation.tsx         # Floating bottom navigation
+│   │   ├── NextEventCard.tsx      # Upcoming event card
+│   │   ├── SocialCard.tsx         # Join community CTA
+│   │   ├── Sponsors.tsx           # Sponsors showcase
+│   │   ├── StatsCard.tsx          # Community stats display
+│   │   ├── TeamSection.tsx        # Core team members
+│   │   └── TechStackCard.tsx      # Tech stack icons
+│   │
+│   │   # Component Organization Pattern:
+│   │   # - Simple components: Single .tsx file (e.g., Header.tsx)
+│   │   # - Complex components: Folder with index.tsx + sub-components
+│   │   #
+│   │   # Example for complex component:
+│   │   # └── AboutUS/
+│   │   #     ├── index.tsx          # Main component (exports AboutUS)
+│   │   #     ├── TerminalBlock.tsx     # Sub-component
+│   │   #     ├── NarrativeBlock.tsx # Sub-component
+│   │
+│   ├── context/             # React Context providers
+│   │   └── ThemeContext.tsx # Theme state management
+│   ├── favicon.ico          # Site favicon
+│   ├── globals.css          # Global styles, theme variables, gradients
+│   ├── layout.tsx           # Root layout with fonts and ThemeProvider
 │   └── page.tsx             # Main landing page
-├── public/                  # Static assets
+├── public/                  # Static assets (currently empty)
+├── out/                     # Static export output (generated)
+├── node_modules/            # Dependencies (generated)
+├── .gitignore               # Git ignore rules
 ├── eslint.config.mjs        # ESLint configuration
-├── next.config.ts           # Next.js configuration
+├── next-env.d.ts            # Next.js TypeScript declarations
+├── next.config.ts           # Next.js config (static export, basePath)
 ├── package.json             # Dependencies and scripts
+├── package-lock.json        # Locked dependency versions
 ├── postcss.config.mjs       # PostCSS configuration
-├── tsconfig.json            # TypeScript configuration
-└── README.md
+├── prototype-dark.html      # Initial design prototype
+├── README.md                # Project documentation
+└── tsconfig.json            # TypeScript configuration
 ```
+
+### Key Directories Explained
+
+**`app/components/`** - All reusable UI components using TypeScript and React 19
+
+- Simple components: Single `.tsx` file
+- Complex components: Folder with `index.tsx` + sub-components
+- Benefits: Encapsulation, clean imports, better organization
+
+**`app/context/`** - React Context providers for global state (theme management)
+
+**`.github/workflows/`** - Automated CI/CD pipeline that deploys to GitHub Pages on push to main
+
+**`out/`** - Generated static site export for deployment (created by `npm run build`)
 
 ## 🎨 Theme Switching
 
@@ -172,11 +208,13 @@ The entire application uses a custom CSS variable-based color system centered ar
 #### Brand Colors
 
 **Primary Colors:**
+
 - Primary: `#004aad` (Deep Blue)
 - Primary Light: `#0066ff` (Bright Blue)
 - Primary Dark: `#003580` (Navy Blue)
 
 **Secondary Colors:**
+
 - Secondary: `#ffa726` / `#ff9800` (Orange)
 - Secondary Light: `#ffb74d` (Light Orange)
 
@@ -209,18 +247,22 @@ Divider: #003580 (Navy Blue)
 The theme includes 5 custom gradient variations:
 
 1. **Primary Gradient** (`--gradient-primary`)
+
    - `linear-gradient(135deg, #004aad 0%, #0066ff 100%)`
    - Used in: Buttons, logos, hero CTA
 
 2. **Primary Soft** (`--gradient-primary-soft`)
+
    - Semi-transparent overlay for subtle backgrounds
    - Used in: Cards, stats section
 
 3. **Hero Gradient** (`--gradient-hero`)
+
    - `linear-gradient(135deg, #003580 0%, #004aad 50%, #0066ff 100%)`
    - Used in: Text gradients, hero section
 
 4. **Card Gradient** (`--gradient-card`)
+
    - Subtle gradient for card backgrounds
    - Used in: Event cards
 
@@ -239,10 +281,7 @@ background: var(--gradient-primary);
 border-color: var(--color-border);
 
 /* Utility classes available */
-.bg-dark-primary
-.text-dark-primary
-.border-dark-border
-.bg-gradient-primary
+.bg-dark-primary .text-dark-primary .border-dark-border .bg-gradient-primary;
 ```
 
 ### Theme Context API
@@ -264,12 +303,14 @@ function MyComponent() {
 The website is **fully responsive** and follows a **mobile-first approach** with optimized layouts for all devices:
 
 - **Mobile**: < 768px
+
   - Touch-optimized interface
   - Simplified navigation
   - Stacked card layouts
   - Optimized font sizes and spacing
 
 - **Tablet**: 768px - 1024px
+
   - Balanced grid layouts
   - Enhanced spacing
   - Optimized for both portrait and landscape
