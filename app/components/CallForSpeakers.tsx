@@ -1,6 +1,6 @@
 export default function CallForSpeakers() {
     return (
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfRlbtegrypHBHw8sHVy_FEcIYLGBo6i5ZETeLxY6NFfSnYjw/viewform">
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfRlbtegrypHBHw8sHVy_FEcIYLGBo6i5ZETeLxY6NFfSnYjw/viewform" target="_blank">
         <div className='md:col-span-2 md:row-span-2 bg-dark-card rounded-bento p-5 md:p-8 border border-dark-border bento-card relative overflow-hidden group flex flex-col justify-between'>
             <div className='relative z-20'>
 

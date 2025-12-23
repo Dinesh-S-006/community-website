@@ -1,6 +1,6 @@
 export default function CallForVolunteers() {
     return (
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdByt9-Cb7vV2ceZnLMcbOSUBA4YfFKMp17QxJAesiddUYpdA/viewform">
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdByt9-Cb7vV2ceZnLMcbOSUBA4YfFKMp17QxJAesiddUYpdA/viewform" target="_blank">
         <div className="md:col-span-1 md:row-span-2 rounded-bento p-8 border border-dark-border bento-card flex flex-col relative overflow-hidden group" style={{ background: 'var(--gradient-card)' }}>
             <div className='relative z-20'>
 
