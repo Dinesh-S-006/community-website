@@ -9,6 +9,8 @@ import SocialCard from './components/SocialCard';
 import MissionLogs from './components/MissionLogs';
 import TeamSection from './components/TeamSection';
 import CommunityPartners from './components/CommunityPartners';
+import CallForSpeakers from './components/CallForSpeakers';
+import CallForVolunteers from './components/CallForVolunteers';
 import Sponsors from './components/Sponsors';
 
 export default function Home() {
@@ -25,6 +27,8 @@ export default function Home() {
           <NextEventCard />
           <StatsCard />
           <LocationCard />
+          <CallForSpeakers />
+          <CallForVolunteers />
           <TechStackCard />
           <SocialCard />
         </div>
