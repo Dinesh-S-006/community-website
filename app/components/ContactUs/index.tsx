@@ -1,7 +1,6 @@
 "use client";
 
 import SocialLinks from "./SocialLinks";
-import ContactForm from "./ContactForm";
 import { MessageSquare } from "lucide-react";
 
 export default function ContactUs() {
@@ -11,7 +10,6 @@ export default function ContactUs() {
       className="px-4 sm:px-6 py-12 sm:py-16"
       aria-labelledby="contact-heading"
     >
-      
       {/* Header */}
       <div className="max-w-7xl mx-auto mb-8 sm:mb-12">
         <h2 
@@ -51,7 +49,6 @@ export default function ContactUs() {
             </div>
           </div>
         </div>
-
 
       </div>
 
