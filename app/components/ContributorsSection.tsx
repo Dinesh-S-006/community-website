@@ -34,7 +34,7 @@ function ContributorCard({ contributor }: { contributor: Contributor }) {
   return (
     <div
       className="
-        bg-dark-card 
+        group
         flex h-[260px] flex-col items-center justify-center
         rounded-xl border border-border
         bg-card p-6 text-center
