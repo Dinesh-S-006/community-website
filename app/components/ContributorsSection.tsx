@@ -15,7 +15,7 @@ type Contributor = {
 export default function ContributorsSection() {
   return (
     <section className="container py-16">
-      <h2 className="mb-8 text-3xl font-bold text-foreground">
+       <h2 className="mb-8 text-3xl font-bold text-dark-text">
         Contributors
       </h2>
 
@@ -36,10 +36,12 @@ function ContributorCard({ contributor }: { contributor: Contributor }) {
       className="
         group
         flex h-[260px] flex-col items-center justify-center
-        rounded-xl border border-border
-        bg-card p-6 text-center
+        rounded-xl
+        bg-dark-card
+        border border-dark-border
+        p-6 text-center
         transition-all duration-200
-        hover:bg-muted/50 hover:shadow-lg
+        hover:border-dark-primary
       "
     >
       <img
@@ -48,17 +50,29 @@ function ContributorCard({ contributor }: { contributor: Contributor }) {
         className="h-20 w-20 rounded-full object-cover"
       />
 
-      <h3 className="mt-4 font-semibold text-card-foreground">
+      <h3 className="mt-4 font-semibold transition-colors group-hover:text-dark-primary">
         {name}
       </h3>
 
-      <p className="text-sm text-muted-foreground">
+      <p className="text-sm text-dark-muted">
         {role}
       </p>
 
       <div className="mt-4 flex gap-3">
-        {github && <SocialIcon href={github} icon={<Github size={16} />} />}
-        {linkedin && <SocialIcon href={linkedin} icon={<Linkedin size={16} />} />}
+        {github && (
+          <SocialIcon
+            href={github}
+            label="GitHub"
+            icon={<Github size={16} />}
+          />
+        )}
+        {linkedin && (
+          <SocialIcon
+            href={linkedin}
+            label="LinkedIn"
+            icon={<Linkedin size={16} />}
+          />
+        )}
       </div>
     </div>
   )
@@ -67,21 +81,29 @@ function ContributorCard({ contributor }: { contributor: Contributor }) {
 function SocialIcon({
   href,
   icon,
+  label,
 }: {
   href: string
   icon: React.ReactNode
+  label: string
 }) {
   return (
     <a
       href={href}
       target="_blank"
       rel="noreferrer"
+      aria-label={label}
       className="
-        flex h-9 w-9 items-center justify-center rounded-full
-        border border-border bg-background
-        text-muted-foreground
-        transition-colors
-        hover:bg-muted hover:text-foreground
+        hidden sm:flex
+        w-10 h-10
+        items-center justify-center
+        rounded-full
+        bg-dark-card
+        border border-dark-border
+        text-dark-muted
+        transition-all
+        hover:text-dark-text
+        hover:border-dark-primary
       "
     >
       {icon}
